@@ -1,0 +1,20 @@
+{
+  "name": "cardiofeedbacksystem",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "git": "git add . && git commit -m %message% && git push"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhonas8/feedback_system_cardio_imagem.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jhonas8/feedback_system_cardio_imagem/issues"
+  },
+  "homepage": "https://github.com/jhonas8/feedback_system_cardio_imagem#readme"
+}
