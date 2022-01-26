@@ -1,0 +1,27 @@
+{
+  "name": "feedback_system",
+  "version": "1.0.0",
+  "description": "Feedback system to a clinical hospital.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhonas8/feedback_system_cardio_imagem.git"
+  },
+  "keywords": [
+    "feebackSystem",
+    "cardioImagem"
+  ],
+  "author": "João Melo <joao.victor.ribeiro.melo@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jhonas8/feedback_system_cardio_imagem/issues"
+  },
+  "homepage": "https://github.com/jhonas8/feedback_system_cardio_imagem#readme",
+  "devDependencies": {
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15"
+  }
+}
