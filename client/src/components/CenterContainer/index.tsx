@@ -1,9 +1,19 @@
 import React from 'react'
-import { Logo } from '../../components'
+import { 
+  Logo,
+  FeedbackButton,
+} from '../../components'
 import './Styles/css/style.css'
 
 export default function CenterContainer() {
-  return <div className='CenterContainer'>
+  const render = () => (
+    <div className='CenterContainer'>
       { Logo().render() }
-  </div>
+      { FeedbackButton().render() }
+    </div>
+  )
+
+  return {
+    render,
+  }
 }
