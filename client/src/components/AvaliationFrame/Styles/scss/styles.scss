@@ -1,0 +1,32 @@
+@use './animation.scss';
+
+:root {
+    --squareArest: 35rem;
+}
+
+.frameContainer {
+    //Variables
+    $squareArest: var(--squareArest);
+    $frameColor: #ffff;
+    $border-to-center-distance: $squareArest/2;
+
+    width: $squareArest;
+    height: $squareArest;
+
+    position: absolute;
+    top: calc(50vh - $border-to-center-distance);
+    left: calc(50vw - $border-to-center-distance);
+    z-index: 1;
+
+    background-color: $frameColor;
+
+    opacity: 0;
+    display: none;
+
+    @include animation.fadeIntroAnimation;
+}
+
+.visibleFrameContainer {
+    opacity: 1;
+    display: block;
+}

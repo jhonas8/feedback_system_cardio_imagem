@@ -2,15 +2,36 @@ import './Styles/css/styles.css'
 import Types from '../../types/AvaliationFrameTypes'
 
 export default function AvaliationFrame(props: Types.Props) {
-  const render = () =>(
-      <div className='AvaliationFrame'>
-          <iframe title='feedback-colector'>
+    
+    const { 
+        openMenu
+    } = props
 
-          </iframe>
-      </div>
-  )
+    const frameContainer = () =>{
+        let visible_invisible_class: string = openMenu 
+            ? 'visibleFrameContainer'
+            : ' ' 
+        
+        const render = {
+            withChildren: (children: JSX.Element[]): JSX.Element => (
+                <div className={`frameContainer ${visible_invisible_class}`}>
+                    {[...children]}
+                </div>
+            )
+        }
 
-  return {
+        return {
+            render
+        }
+    }
+
+    const render = () =>(
+      frameContainer().render.withChildren([
+        
+      ])
+    )
+
+    return {
       render
-  }
+    }
 }

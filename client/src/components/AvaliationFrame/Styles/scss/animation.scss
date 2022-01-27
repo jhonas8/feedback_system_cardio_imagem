@@ -1,0 +1,21 @@
+@keyframes fade-in-animation {
+    0% {
+        width: 0;
+        height: 0;
+
+        top: 50vh;
+        left: 50vw;
+    }
+
+    100% {
+        width: var(--squareArest);
+        height: var(--squareArest);
+        
+        top: calc(50vh - (var(--squareArest)/2));
+        left: calc(50vw - (var(--squareArest)/2));
+    }
+}
+
+@mixin fadeIntroAnimation {
+    animation: fade-in-animation .5s ease-in-out forwards;
+}
