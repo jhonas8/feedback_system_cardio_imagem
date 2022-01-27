@@ -1,3 +1,23 @@
-
+.Logo {
+  display: grid;
+  grid-template-columns: 1rem 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "cardio cardio" "gap imagem";
+}
+@font-face {
+  .Logo {
+    font-family: "BuloRounded-Bold";
+    src: url("../../../../assets/Fonts/BuloRounded-Bold.ttf") format("ttf");
+  }
+}
+.Logo .Cardio {
+  grid-area: cardio;
+}
+.Logo .Imagem {
+  grid-area: imagem;
+}
+.Logo .gap {
+  grid-area: gap;
+}
 
 /*# sourceMappingURL=style.css.map */
