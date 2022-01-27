@@ -1,10 +1,22 @@
-import React from 'react'
-import { CenterContainer } from '../../components'
+import { useState } from 'react'
+import { CenterContainer,
+         AvaliationFrame } from '../../components'
 
 export default function Home() {
+
+  const [openMenu, setOpenMenu] = useState<boolean>(false);
+
+  const props = {
+    for:{
+      Button: { openMenu, setOpenMenu },
+      AvaliationFrame: { openMenu },
+    }
+  }
+
   return (
     <main className='App'>
-      { CenterContainer().render() }    
+      { CenterContainer({...props.for.Button}).render() }   
+      { AvaliationFrame({...props.for.AvaliationFrame}).render() }
     </main>
   )
 }

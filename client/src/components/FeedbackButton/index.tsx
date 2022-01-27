@@ -1,14 +1,29 @@
+import Types from '../../types/ButtonTypes'
 import './Styles/css/styles.css'
 
-export default function FeedbackButton(this: any) {
+export default function FeedbackButton(this: any, props: Types.Props) {
   
-  const render = () => (
-      <button className="FeedbackButton">
-          Feedback
-      </button>
-  )
+  const { setOpenMenu,
+          openMenu } = props
 
-    return {
+  const button = () => ({
+    buttonText: 'Feedback',
+
+    render: () => 
+      <button 
+      className="FeedbackButton"
+      onClick={()=>setOpenMenu(!openMenu)}
+    >
+      { button().buttonText }
+    </button>,
+
+  })
+
+  const render = () => (
+    button().render() 
+  )
+  
+  return {
         render,
-  };
+  }
 }
