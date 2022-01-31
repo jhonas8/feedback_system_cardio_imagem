@@ -1,7 +1,7 @@
 @use './animation.scss';
 
 :root {
-    --squareArest: 40rem; 
+    --squareArest: 20rem; 
 }
 
 .frameContainer {
@@ -23,20 +23,31 @@
     opacity: 0;
     display: none;
 
+    border-radius: 15%;
+
     @include animation.fadeIntroAnimation;
 }
 
 .visibleFrameContainer {
     opacity: 1;
     
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    display: block;
 }
 
 .innerPart {
     opacity: 0;
-    
     @include animation.innerPartAnimation;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 2rem;
+}
+
+.avaliationFrameTitle{
+    color: var(--primary-color); 
 }

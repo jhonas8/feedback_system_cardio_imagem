@@ -20,7 +20,7 @@ export default function useClickOutside(handler: any): React.RefObject<HTMLDivEl
         document.addEventListener('mousedown', maybeHandler)
             
         return ()=>{
-            document.addEventListener('mousedown', maybeHandler)
+            document.removeEventListener('mousedown', maybeHandler)
         }
     })
     

@@ -18,6 +18,7 @@
     .Cardio {
         grid-area: cardio;
         color: #808080;
+
         filter: drop-shadow(0 0 0.75rem #7e7d7d50);    
         opacity: 0;
         @include animation.cardioAnimation;
@@ -26,6 +27,7 @@
     .Imagem {
         grid-area: imagem;
         color: #3ABA97;
+        
         filter: drop-shadow(0 0 0.75rem #36ac8c54); 
         opacity: 0;   
         @include animation.imagemAnimation;
