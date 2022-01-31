@@ -14,7 +14,9 @@ export default function Home() {
   }
 
   return (
-    <main className='App'>
+    <main className='App'
+      key={0}
+    >
       { CenterContainer({...props.for.Button}).render() }   
       { AvaliationFrame({...props.for.AvaliationFrame}).render() }
     </main>

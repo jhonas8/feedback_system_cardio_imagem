@@ -3,29 +3,32 @@ import './Styles/css/styles.css'
 import './Styles/css/button.css'
 import Types from '../../types/AvaliationFrameTypes'
 import useClickOutside from '../../utils/useClickOutside'
+import getFeedback from '../../utils/getFeedback'
 
-export default function AvaliationFrame(this:any, props: Types.Props) {
-    
-    const { 
+export default function AvaliationFrame(this: any, props: Types.Props) {
+
+    const {
         openMenu,
         setOpenMenu,
-    } = props   
+    } = props
+
+    const [titleText, setTitleText] = useState('Iniciar o feedback')
 
     const FrameContainer = () => {
- 
-        let clickOutsideRef = useClickOutside(()=>{
+
+        let clickOutsideRef = useClickOutside(() => {
             setOpenMenu(false)
         })
 
-        let visible_invisible_class: string = openMenu 
+        let visible_invisible_class: string = openMenu
             ? 'visibleFrameContainer'
-            : ' ' 
-        
+            : ' '
+
         const render = {
             withChildren: (children: JSX.Element[]): JSX.Element => (
-                <div 
-                className={`frameContainer ${visible_invisible_class}`}
-                ref={clickOutsideRef!}
+                <div
+                    className={`frameContainer ${visible_invisible_class}`}
+                    ref={clickOutsideRef!}
                 >
                     <div className="innerPart">
                         {[...children]}
@@ -41,25 +44,24 @@ export default function AvaliationFrame(this:any, props: Types.Props) {
     const BeginFeedbackButton = () => {
 
         const [buttonColor, setButtonColor] = useState<string>('primary');
-        
+
         const buttonText = 'Iniciar'
 
         const onClickHandler = () => {
 
             setButtonColor('secondary')
-        
+            setTitleText('Esperando pela avaliação...')
+
+            getFeedback()
         }
 
-        const onClickAsyncHandler = () => new Promise((resolve,reject)=>{
-            
-        })
-        
         const render = (): JSX.Element => (
             <button
                 className={`beginFeedbackButton ${buttonColor}`}
-                onClick={()=>onClickHandler()}
+                onClick={() => onClickHandler()}
+                key={titleText+'button'}
             >
-                { buttonText }
+                {buttonText}
             </button>
         )
 
@@ -68,15 +70,14 @@ export default function AvaliationFrame(this:any, props: Types.Props) {
         }
     }
 
-    const AvaliationFrameTitlte = () => {
+    const AvaliationFrameTitle = () => {
 
-        const titleText = 'Iniciar o feedback'
-
-        const render = (): JSX.Element =>(
+        const render = (): JSX.Element => (
             <h3
                 className='avaliationFrameTitle'
+                key={titleText}
             >
-                { titleText }
+                {titleText}
             </h3>
         )
 
@@ -85,16 +86,16 @@ export default function AvaliationFrame(this:any, props: Types.Props) {
         }
     }
 
-    const render = () =>(
-      FrameContainer().render.withChildren([
+    const render = () => (
+        FrameContainer().render.withChildren([
 
-        AvaliationFrameTitlte().render(),
-        BeginFeedbackButton().render()
+            AvaliationFrameTitle().render(),
+            BeginFeedbackButton().render()
 
-      ])
+        ])
     )
 
     return {
-      render
+        render
     }
 }
