@@ -9,7 +9,7 @@ export default function AvaliationFrame(this:any, props: Types.Props) {
         setOpenMenu,
     } = props   
 
-    const FrameContainer = () =>{
+    const FrameContainer = () => {
 
         let clickOutsideRef = useClickOutside(()=>{
             setOpenMenu(false)
@@ -25,18 +25,35 @@ export default function AvaliationFrame(this:any, props: Types.Props) {
                 className={`frameContainer ${visible_invisible_class}`}
                 ref={clickOutsideRef!}
                 >
-                    {[...children]}
+                    <div className="innerPart">
+                        {[...children]}
+                    </div>
                 </div>
             )
         }
         return {
-            render
+            render,
+        }
+    }
+
+    const beginFeedbackButton = () => {
+        
+        const buttonText = 'Iniciar'
+        
+        const render = (): JSX.Element => (
+            <button>
+                { buttonText }
+            </button>
+        )
+
+        return {
+            render,
         }
     }
 
     const render = () =>(
       FrameContainer().render.withChildren([
-        
+        beginFeedbackButton().render()
       ])
     )
 

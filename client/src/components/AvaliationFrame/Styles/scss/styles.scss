@@ -34,3 +34,9 @@
     justify-content: center;
     align-items: center;
 }
+
+.innerPart {
+    opacity: 0;
+    
+    @include animation.innerPartAnimation;
+}

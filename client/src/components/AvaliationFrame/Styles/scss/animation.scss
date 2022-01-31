@@ -16,6 +16,20 @@
     }
 }
 
+@keyframes inner-part-animation {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 @mixin fadeIntroAnimation {
     animation: fade-in-animation .5s ease-in-out forwards;
+}
+
+@mixin innerPartAnimation {
+    animation: inner-part-animation .5s ease-in-out forwards .5s;
 }

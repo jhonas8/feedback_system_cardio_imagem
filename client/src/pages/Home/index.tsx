@@ -7,7 +7,7 @@ export default function Home() {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
 
   const props = {
-    for:{
+    for: {
       Button: { openMenu, setOpenMenu },
       AvaliationFrame: { openMenu, setOpenMenu },
     }

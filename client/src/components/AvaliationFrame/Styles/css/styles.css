@@ -12,6 +12,14 @@
     left: calc(50vw - var(--squareArest) / 2);
   }
 }
+@keyframes inner-part-animation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 :root {
   --squareArest: 40rem;
 }
@@ -35,6 +43,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.innerPart {
+  opacity: 0;
+  animation: inner-part-animation 0.5s ease-in-out forwards 0.5s;
 }
 
 /*# sourceMappingURL=styles.css.map */
