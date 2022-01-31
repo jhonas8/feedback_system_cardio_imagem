@@ -2,20 +2,18 @@ import './Styles/css/styles.css'
 import Types from '../../types/AvaliationFrameTypes'
 import useClickOutside from '../../utils/setClickOutside'
 
-export default function AvaliationFrame(props: Types.Props) {
+export default function AvaliationFrame(this:any, props: Types.Props) {
     
     const { 
         openMenu,
         setOpenMenu,
     } = props   
 
-    let clickOutsideRef = useClickOutside(
-        ()=> {
-            setOpenMenu(false)
-        }
-    )
+    const FrameContainer = () =>{
 
-    const frameContainer = () =>{
+        let clickOutsideRef = useClickOutside(()=>{
+            setOpenMenu(false)
+        })
 
         let visible_invisible_class: string = openMenu 
             ? 'visibleFrameContainer'
@@ -37,7 +35,7 @@ export default function AvaliationFrame(props: Types.Props) {
     }
 
     const render = () =>(
-      frameContainer().render.withChildren([
+      FrameContainer().render.withChildren([
         
       ])
     )
