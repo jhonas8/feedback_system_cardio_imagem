@@ -9,7 +9,7 @@ export default function Home() {
   const props = {
     for:{
       Button: { openMenu, setOpenMenu },
-      AvaliationFrame: { openMenu },
+      AvaliationFrame: { openMenu, setOpenMenu },
     }
   }
 

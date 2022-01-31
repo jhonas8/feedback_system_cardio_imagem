@@ -1,7 +1,7 @@
 @use './animation.scss';
 
 :root {
-    --squareArest: 35rem;
+    --squareArest: 40rem; 
 }
 
 .frameContainer {
@@ -28,5 +28,9 @@
 
 .visibleFrameContainer {
     opacity: 1;
-    display: block;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
