@@ -56,13 +56,15 @@ export default function AvaliationFrame(this: any, props: Types.Props) {
         }
 
         const render = (): JSX.Element => (
-            <button
-                className={`beginFeedbackButton ${buttonColor}`}
-                onClick={() => onClickHandler()}
-                key={titleText+'button'}
-            >
-                {buttonText}
-            </button>
+            <form action='/' method='post' key={titleText+'form'}>
+                <input
+                    className={`beginFeedbackButton ${buttonColor}`}
+                    key={titleText+'button'}
+                    value={buttonText}
+                    type='submit'
+                    onClick={onClickHandler}
+                />
+            </form>
         )
 
         return {
