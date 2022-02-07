@@ -1,4 +1,4 @@
-import express, { application } from 'express'
+import express from 'express'
 import cors from 'cors'
 import connectDB from './DB/Connection'
 
@@ -10,10 +10,12 @@ server.use(cors())
 
 connectDB()
 
+const homeRoutes = require('./routes/home')
+
 server.get('/', (request, response)=>{
     return response.send('Server is running well.')
 })
 
-server.use('/', require('./API/Avaliation'))
+server.use('/', homeRoutes)
 
 export default server

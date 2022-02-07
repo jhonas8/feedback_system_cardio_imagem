@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './Styles/css/styles.css'
 import './Styles/css/button.css'
-import Types from '../../types/AvaliationFrameTypes'
+import Types from '../../@types/AvaliationFrameTypes'
 import useClickOutside from '../../utils/useClickOutside'
 import getFeedback from '../../utils/getFeedback'
 

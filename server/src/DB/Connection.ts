@@ -1,11 +1,9 @@
-import { connect, ConnectOptions } from "mongoose"
+import { connect } from "mongoose"
+import 'dotenv/config'
 
-const username: string = 'CardioSystem'
-const password: string = 'KGZeGfwL92AfqFhT'
+const URI: string = process.env.DB_connection!
 
-const URI: string = `mongodb+srv://${username}:${password}@cluster0.e7bn8.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
-
-const connectDB = async() => {
+const connectDB = async(): Promise<void> => {
 
     try {
         await connect(URI)

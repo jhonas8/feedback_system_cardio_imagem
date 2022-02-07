@@ -3,7 +3,7 @@ import {
   FeedbackButton,
 } from '../../components'
 import './Styles/css/style.css'
-import Types from '../../types/CenterContainerTypes'
+import Types from '../../@types/CenterContainerTypes'
 
 export default function CenterContainer(this: any, props:Types.Props) {
 

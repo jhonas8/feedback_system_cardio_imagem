@@ -1,4 +1,4 @@
-import Types from '../../types/ButtonTypes'
+import Types from '../../@types/ButtonTypes'
 import './Styles/css/styles.css'
 
 export default function FeedbackButton(this: any, props: Types.Props) {
