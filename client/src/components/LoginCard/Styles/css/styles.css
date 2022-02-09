@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&display=swap");
+:root {
+  --login-card-color: #f1eeee;
+}
+
+.LoginPage {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  width: 100%;
+  background-color: var(--login-card-color);
+  width: 40vw;
+  height: 40vw;
+  padding: 1rem;
+  border: 1px solid transparent;
+  border-radius: 15%;
+}
+.loginForm h3 {
+  color: #000;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.3rem;
+  width: 100%;
+  color: #000;
+}
+.field #email, .field #password {
+  height: 1.5rem;
+  width: 100%;
+  border: 1px solid transparent;
+}
+
+.actions .loginButton {
+  padding: 0.3rem;
+  border: 1px solid #000;
+  border-radius: 15%;
+  background-color: var(--login-card-color);
+  color: #000;
+  font-size: 1em;
+  font-weight: bold;
+  transition: all ease-out 0.2s;
+}
+.actions .loginButton:hover {
+  transition: all ease-in 0.2s;
+  background-color: #d3d1d1;
+  border: 1px solid transparent;
+}
+
+/*# sourceMappingURL=styles.css.map */

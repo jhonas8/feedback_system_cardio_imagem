@@ -36,4 +36,23 @@ export default class User {
         const avaliationModel = new AvaliationModel(avaliationRate)
         await avaliationModel.save()
     }
+
+    public static async allAvaliations() {
+        return await AvaliationModel.find()
+    }
+
+    public static async totalOfAvaliations() {
+        const allAvaliations = await this.allAvaliations()
+
+        let Total: number = 0
+
+        allAvaliations
+            .forEach(
+                avaliation => {
+                    Total = Total + avaliation.total
+                }
+            )
+
+        return Total
+    }
 }

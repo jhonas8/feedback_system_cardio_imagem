@@ -1,5 +1,5 @@
-import { Schema, model } from 'mongoose'
 
+import { Schema, model } from 'mongoose'
 const avaliationSchema =  new Schema({
     feedbackRate: {
         type: String,

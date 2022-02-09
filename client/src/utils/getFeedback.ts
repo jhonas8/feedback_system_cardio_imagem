@@ -35,7 +35,9 @@ const handlerFeedback = async(key: string) => {
     try {
         const { data } = await postValue( key )
 
-        if(data === 'received') return window.location.reload()
+        if(data === 'received') 
+            return window.location.reload()
+        
 
     } catch(error){
         console.log(error)
@@ -48,5 +50,5 @@ export const api = axios.create({
 })
 
 export const postValue = async(value: string) =>{
-    return api.post('/', { value: value })
+    return api.post('/feedback', { value: value })
 }

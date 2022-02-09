@@ -10,12 +10,14 @@ server.use(cors())
 
 connectDB()
 
-const homeRoutes = require('./routes/home')
+const homeRoutes = require('./routes/feedback')
+const adminRoutes = require('./routes/admin')
 
 server.get('/', (request, response)=>{
     return response.send('Server is running well.')
 })
 
-server.use('/', homeRoutes)
+server.use('/feedback', homeRoutes)
+server.use('/admin', adminRoutes)
 
 export default server
