@@ -12,7 +12,7 @@ export default function getFeedback() {
         avaliationPossibilities.forEach(
             possiblity =>{
                 if(keyBeingPressed.includes(possiblity)){
-                    handlerFeedback(possiblity)
+                    HandlerFeedback(possiblity)
                 }
             }
         )
@@ -31,13 +31,12 @@ export default function getFeedback() {
         }
 }
 
-const handlerFeedback = async(key: string) => {
+const HandlerFeedback = async(key: string) => {
     try {
         const { data } = await postValue( key )
 
         if(data === 'received') 
             return window.location.reload()
-        
 
     } catch(error){
         console.log(error)

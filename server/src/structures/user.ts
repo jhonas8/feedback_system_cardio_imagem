@@ -1,9 +1,37 @@
 import AvaliationModel from "../Schemas/Avaliation"
-import { avaliationRate } from "../@types/mongoRequestType"
+import UserModel from "../Schemas/UserSchema"
+import { avaliationRate, user } from "../@types/mongoRequestType"
 
 export default class User {
+    private credentials: {name: string, password:string}
+    private ID: string | null
 
-    public static async isThereAvaliationOf(feebackRate: string): Promise<Boolean>{
+    constructor({name, password}: {name: string, password: string}) {
+        this.credentials = { name, password }
+        this.ID = ''
+
+        AvaliationModel
+            .findOne({ name, password })
+            .then(user => {
+                this.ID = user.id
+            })
+    }
+
+    public static async exists({name , password}: {name: string, password: string}): Promise<any> {
+        const user = await UserModel    
+            .findOne({name, password})
+            .exec()
+        
+        return user
+
+    }
+
+    public static async registration(user: user): Promise<any> {
+        const userModel = new UserModel(user)
+        await userModel.save()
+    }
+
+    public async isThereAvaliationOf(feebackRate: string): Promise<Boolean> {
         const existentAvaliation = await AvaliationModel
             .findOne({
                 feedbackRate: feebackRate
@@ -15,7 +43,7 @@ export default class User {
             : false
     }
 
-    public static async updateTotalOf(feedbackRate: string): Promise<void> {
+    public async updateTotalOf(feedbackRate: string): Promise<void> {
         const existentAvaliation = await AvaliationModel
         .findOne({
             feedbackRate: feedbackRate
@@ -28,7 +56,7 @@ export default class User {
             })    
     }
 
-    public static async submitNewAvaliation(feedbackRate: string): Promise<void> {
+    public async submitNewAvaliation(feedbackRate: string): Promise<void> {
         let avaliationRate: avaliationRate = {
             feedbackRate: feedbackRate,
             total: 1
@@ -37,11 +65,11 @@ export default class User {
         await avaliationModel.save()
     }
 
-    public static async allAvaliations() {
+    public async allAvaliations() {
         return await AvaliationModel.find()
     }
 
-    public static async totalOfAvaliations() {
+    public async totalOfAvaliations() {
         const allAvaliations = await this.allAvaliations()
 
         let Total: number = 0

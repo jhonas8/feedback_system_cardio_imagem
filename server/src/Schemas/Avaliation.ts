@@ -1,13 +1,17 @@
-
 import { Schema, model } from 'mongoose'
+
 const avaliationSchema =  new Schema({
     feedbackRate: {
         type: String,
-        require: true
+        required: true
     },
     total: {
         type: Number,
         required: true
+    },
+    userId: {
+        type: String,
+        requried: true
     },
     date: {
         type: String,

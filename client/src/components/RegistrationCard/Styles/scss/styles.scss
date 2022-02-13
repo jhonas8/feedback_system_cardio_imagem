@@ -5,10 +5,10 @@
 }
 
 :root {
-    --login-card-color: #f1eeee;
+    --Register-card-color: #f1eeee;
 }
 
-.LoginPage {
+.RegisterPage {
     height: 100vh;
     width: 100vw;
     
@@ -19,14 +19,14 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.loginForm {
+.RegisterForm {
    display: flex;
    flex-direction: column;
    align-items: center;
    justify-content: center;
    gap: 1.2rem; 
 
-   background-color: var(--login-card-color);
+   background-color: var(--Register-card-color);
 
    width: 40vw;
    height: 40vw;
@@ -66,13 +66,13 @@
 
 .actions {
     
-    .loginButton {
+    .RegisterButton {
         padding: .3rem;
 
         border: 1px solid #9c9c9c;
         border-radius: 15%;
 
-        background-color: var(--login-card-color);
+        background-color: var(--Register-card-color);
         color: #4d4c4c;
 
         font-size: 1em;

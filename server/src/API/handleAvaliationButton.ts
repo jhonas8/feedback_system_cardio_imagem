@@ -5,14 +5,16 @@ const handleAvaliationButton = async(request: any, response: any) => {
     
     const feedbackRate = meaningOfTheAvaliation(request.body.value)
 
-    const isThereAnAvaliation = await User.isThereAvaliationOf(feedbackRate)
+    const user = new User({name:'user', password:'123'})
+
+    const isThereAnAvaliation = await user.isThereAvaliationOf(feedbackRate)
 
     if(isThereAnAvaliation)
-        await User.updateTotalOf(feedbackRate)
+        await user.updateTotalOf(feedbackRate)
     
     else 
-        await User.submitNewAvaliation(feedbackRate)
-
+        await user.submitNewAvaliation(feedbackRate)
+    
     response.send('received')
 }
 

@@ -1,7 +1,8 @@
 declare namespace userType {
     export interface user {
         id: string
-        user: string
+        name: string
+        segment?: string
     }
 }
 

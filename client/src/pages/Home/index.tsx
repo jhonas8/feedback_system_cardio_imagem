@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { CenterContainer,
          AvaliationFrame } from '../../components'
+import { LogoutButton } from '../../components'
 
 export default function Home() {
 
@@ -19,6 +20,7 @@ export default function Home() {
     >
       { CenterContainer({...props.for.Button}).render() }   
       { AvaliationFrame({...props.for.AvaliationFrame}).render() }
+      { LogoutButton().render() }
     </main>
   )
 }

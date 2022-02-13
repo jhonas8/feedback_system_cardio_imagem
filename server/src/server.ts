@@ -12,6 +12,8 @@ connectDB()
 
 const homeRoutes = require('./routes/feedback')
 const adminRoutes = require('./routes/admin')
+const loginRoutes = require('./routes/login')
+const tiRoutes = require('./routes/ti')
 
 server.get('/', (request, response)=>{
     return response.send('Server is running well.')
@@ -19,5 +21,7 @@ server.get('/', (request, response)=>{
 
 server.use('/feedback', homeRoutes)
 server.use('/admin', adminRoutes)
+server.use('/login', loginRoutes)
+server.use('/ti', tiRoutes)
 
 export default server

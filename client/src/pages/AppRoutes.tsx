@@ -13,6 +13,8 @@ import {
     LoginPage,
     HomePage,
     AdminPage,
+    RegistrationPage,
+    TIPage,
 } from './'
 
 import {
@@ -22,18 +24,28 @@ import {
 
 export default function AppRoutes(){
 
-    const Private = ({children}: {children: JSX.Element | JSX.Element[]}) => {
-        const { authenticated, loading } = useContext(AuthContext)!
+    interface Props {
+        children : JSX.Element | JSX.Element[]
+        segment?: string
+    }
+
+    const Private = (props: Props) => {
+        const { loading, authenticated, userSegment } = useContext(AuthContext)!
+        const { children, segment } = props
+
+        const LoadingText = () => <h1>Loading...</h1>
+
+        const isAuthorizedSegment: boolean = !segment && userSegment==='Recepção'
+            ? true
+            : (segment === userSegment)
 
         return loading
-        ? <h1>Loading...</h1>
-        : authenticated
-            ? (
-                <>
-                    { children }
-                </>
-            )
-            : <Navigate to='/login' />
+            ? LoadingText()
+            : authenticated
+                ? isAuthorizedSegment
+                    ? <> { children } </>
+                    : <Navigate to={'/' + userSegment?.toLowerCase()!}/>
+                : <Navigate to='/login'/>
     }
 
     return(
@@ -46,11 +58,24 @@ export default function AppRoutes(){
                         </Private>
                     }/>
                     <Route path='/admin' element={
-                        <Private>
+                        <Private segment='admin'>
                             <AdminPage/>
                         </Private>
                     }/>
                     <Route path='/login' element={<LoginPage/>}/>
+                    <Route path='/ti' >
+                        <Route index element={
+                            <Private segment='TI'>
+                                <TIPage/>
+                            </Private>
+                        }/>
+                        
+                        <Route path='register' element={
+                            <Private segment='TI'>     
+                                <RegistrationPage/>
+                            </Private>
+                        }/>
+                    </Route>
                 </Routes>
             </AuthProvider>
         </Router>

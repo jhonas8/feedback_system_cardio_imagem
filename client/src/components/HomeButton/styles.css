@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&display=swap");
+
+.homeButtonTI {
+    position: absolute;
+    z-index: 1;
+
+    top: 0;
+    right: 1rem;
+
+    border: none;
+    background-color: transparent;
+    
+    color: #818080;
+    transition: all 0.2s ease-in;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+  
+}
+
+
+.homeButtonTI:hover {
+    color: #313131;
+    transition: all 0.2s ease-in-out;
+}
