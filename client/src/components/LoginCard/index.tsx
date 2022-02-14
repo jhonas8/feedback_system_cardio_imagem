@@ -1,6 +1,5 @@
 import './Styles/css/styles.css'
 import Types from '../../@types/LoginCardTypes'
-import { Link } from 'react-router-dom'
 
 export default function LoginCard(this: any, props: Types.Props) {
 
@@ -31,7 +30,6 @@ export default function LoginCard(this: any, props: Types.Props) {
                 { LoginUserInput().render() }
                 { LoginPasswordInput().render() }
                 { LoginSubmitButton().render() }
-                { RegisterButton().render() }
             </form>
         )
 
@@ -160,19 +158,6 @@ export default function LoginCard(this: any, props: Types.Props) {
             renderWithChildren,
         }
     } 
-
-    const RegisterButton = () => {
-        
-        const render = () => (
-            <Link to='/ti/register' className='register'>
-                Cadastre um novo usuário
-            </Link>
-        )
-
-        return {
-            render,
-        }
-    }
 
     const render = () =>
         LoginCardFrame([

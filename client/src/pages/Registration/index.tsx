@@ -8,6 +8,7 @@ export default function RegistrationPage(this: any) {
     const [password, setPassword] = useState<string>('')
     const [name, setName] = useState<string>('')
     const [segmentation, setSegmentation] = useState<string>('Recepção')
+    const [employeeName, setEmployeeName] = useState<string>('')
 
     const { register } = useContext(AuthContext)!
 
@@ -20,6 +21,7 @@ export default function RegistrationPage(this: any) {
             name,
             password,
             segmentation,
+            employeeName,
         )
     }
     
@@ -33,6 +35,8 @@ export default function RegistrationPage(this: any) {
                 handleSubmit,
                 setSegmentation,
                 segmentation,
+                employeeName,
+                setEmployeeName
             },
 
             HomeButton: '/ti'

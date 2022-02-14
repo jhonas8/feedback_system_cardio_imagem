@@ -3,6 +3,8 @@ declare namespace userType {
         id: string
         name: string
         segment?: string
+        employeeName?: string
+        _id?:string
     }
 }
 

@@ -33,7 +33,9 @@ export default function getFeedback() {
 
 const HandlerFeedback = async(key: string) => {
     try {
-        const { data } = await postValue( key )
+        const recoveredUser = JSON.parse(localStorage.getItem('user')!)
+        const userId = recoveredUser.id! 
+        const { data } = await postValue( key, userId )
 
         if(data === 'received') 
             return window.location.reload()
@@ -48,6 +50,6 @@ export const api = axios.create({
     baseURL:'http://localhost:8001'
 })
 
-export const postValue = async(value: string) =>{
-    return api.post('/feedback', { value: value })
+export const postValue = async(value: string, userId: string) =>{
+    return api.post('/feedback', { value: value, userId })
 }

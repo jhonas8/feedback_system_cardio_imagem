@@ -6,15 +6,19 @@ import {
 const userSchema = new Schema({
     name: {
         type: String,
-        required: true
+        required: true,
     },
     password: {
         type: String,
-        required: true
+        required: true,
     },
     segment: {
         type: String,
-        required: false
+        required: false,
+    },
+    employeeName: {
+        type: String,
+        required: false,
     }
 })
 

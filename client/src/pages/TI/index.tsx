@@ -16,12 +16,15 @@ export default function TIPage(this: any) {
     const props = {
         for: {
             showUserButton: {
-                buttonText: 'Show users',
-                handleClick: (e:buttonEvent)=>{}
+                buttonText: 'Usuários',
+                handleClick: (e:buttonEvent)=>{
+                    e.preventDefault()
+                    navigate('users')
+                }
             },
-            
+
             registerNewUser: {
-                buttonText: 'Register new User',
+                buttonText: 'Registrar Usuário',
                 handleClick: (e:buttonEvent)=>{
                     e.preventDefault()
                     navigate('register')
@@ -35,7 +38,7 @@ export default function TIPage(this: any) {
         const { buttonText, handleClick } = props
 
         const render = () => (
-            <button className="tiButton" key='tiButton' onClick={e=>handleClick(e)}>
+            <button className="tiButton" key={'tiButton' + buttonText} onClick={e=>handleClick(e)}>
                 <div className="tiButtonText">
                     { buttonText }
                 </div>

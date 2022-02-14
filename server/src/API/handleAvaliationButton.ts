@@ -5,7 +5,7 @@ const handleAvaliationButton = async(request: any, response: any) => {
     
     const feedbackRate = meaningOfTheAvaliation(request.body.value)
 
-    const user = new User({name:'user', password:'123'})
+    const user = new User(request.body.userId)
 
     const isThereAnAvaliation = await user.isThereAvaliationOf(feedbackRate)
 

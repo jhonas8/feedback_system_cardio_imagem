@@ -3,18 +3,10 @@ import UserModel from "../Schemas/UserSchema"
 import { avaliationRate, user } from "../@types/mongoRequestType"
 
 export default class User {
-    private credentials: {name: string, password:string}
     private ID: string | null
 
-    constructor({name, password}: {name: string, password: string}) {
-        this.credentials = { name, password }
-        this.ID = ''
-
-        AvaliationModel
-            .findOne({ name, password })
-            .then(user => {
-                this.ID = user.id
-            })
+    constructor(userId: string) {
+        this.ID = userId
     }
 
     public static async exists({name , password}: {name: string, password: string}): Promise<any> {
@@ -26,15 +18,48 @@ export default class User {
 
     }
 
+    public static async returnAll() {
+        const users = await UserModel
+            .find()
+            .exec()
+
+        return users.filter(user => user.segment!=='admin')
+    }
+
     public static async registration(user: user): Promise<any> {
+        const existingUser = await UserModel
+            .findOne(user)
+            .exec()
+
+        if(existingUser) return 'Usuário já existe!'
+
         const userModel = new UserModel(user)
         await userModel.save()
+    }
+
+    public async changePassword(newPassword: string) {
+        const user = await UserModel
+            .findById(this.ID)
+            .exec()
+        
+        if (user) await user
+            .updateOne({password: newPassword})
+
+        return user
+    }
+
+    public async removeUser() {
+        const user = await UserModel
+            .deleteOne({_id: this.ID})
+
+        return user
     }
 
     public async isThereAvaliationOf(feebackRate: string): Promise<Boolean> {
         const existentAvaliation = await AvaliationModel
             .findOne({
-                feedbackRate: feebackRate
+                feedbackRate: feebackRate,
+                userId: this.ID
             })
             .exec()
 
@@ -46,7 +71,8 @@ export default class User {
     public async updateTotalOf(feedbackRate: string): Promise<void> {
         const existentAvaliation = await AvaliationModel
         .findOne({
-            feedbackRate: feedbackRate
+            feedbackRate: feedbackRate,
+            userId: this.ID
         })
         .exec()
 
@@ -59,6 +85,7 @@ export default class User {
     public async submitNewAvaliation(feedbackRate: string): Promise<void> {
         let avaliationRate: avaliationRate = {
             feedbackRate: feedbackRate,
+            userId: this.ID!,
             total: 1
         }
         const avaliationModel = new AvaliationModel(avaliationRate)
@@ -83,4 +110,5 @@ export default class User {
 
         return Total
     }
+
 }

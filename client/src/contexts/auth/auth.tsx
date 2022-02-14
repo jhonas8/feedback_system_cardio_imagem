@@ -7,7 +7,7 @@ interface AuthContextInterface {
     user?: userType.user | null
     authenticated?: boolean
     login?: (user: string, password: string) => void
-    register?: (username: string, password: string, segmentation: string) => void
+    register?: (username: string, password: string, segmentation: string, employeeName: string) => void
     logout?: () => void
     loading?: boolean
     userSegment?: string
@@ -53,9 +53,9 @@ export const AuthProvider = ({children}: {children: JSX.Element[] | JSX.Element}
             setUser(loggedUser)
             setUserSegment(data.segment as string)
 
-            const targetLocation = data.segment?.toLowerCase()!
-
-            console.log(targetLocation)
+            const targetLocation = data.segment !== 'Recepção'
+                ? data.segment?.toLowerCase()!
+                : ''
 
             navigate(targetLocation)
         }else {
@@ -73,8 +73,8 @@ export const AuthProvider = ({children}: {children: JSX.Element[] | JSX.Element}
         navigate('/login')
     }
 
-    const register = async(username: string, password: string, segmentation: string) => {
-        const user = { name: username, password, segment: segmentation }
+    const register = async(username: string, password: string, segmentation: string, employeeName: string) => {
+        const user = { name: username, password, segment: segmentation, employeeName }
         
         console.log('Registered ', user)
 
@@ -82,7 +82,7 @@ export const AuthProvider = ({children}: {children: JSX.Element[] | JSX.Element}
 
         if(data){
             window.alert(data)
-            return navigate('/login')
+            window.location.reload()
         }
     }
 

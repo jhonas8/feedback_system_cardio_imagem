@@ -4,6 +4,8 @@ import './Styles/css/styles.css'
 declare interface RegistrationProps extends Types.Props {
     setSegmentation: any
     segmentation: string
+    employeeName: string,
+    setEmployeeName: any
 }
 
 export default function RegistrationCard(this: any, props: RegistrationProps) {
@@ -16,6 +18,8 @@ export default function RegistrationCard(this: any, props: RegistrationProps) {
         handleSubmit,
         setSegmentation,
         segmentation,
+        employeeName,
+        setEmployeeName
     } = props
 
 
@@ -37,6 +41,7 @@ export default function RegistrationCard(this: any, props: RegistrationProps) {
                 { RegisterFormTitle().render() }
                 { RegisterUserInput().render() }
                 { RegisterPasswordInput().render() }
+                { RegisterNameInput().render() }
                 { SegmentationInput().render() }
                 { RegisterSubmitButton().render() }
             </form>
@@ -121,6 +126,47 @@ export default function RegistrationCard(this: any, props: RegistrationProps) {
                 onChange={e=>setPassword(e.target.value)}
                 value={password}
                 key="RegisterPasswordInput"
+                required
+            />
+
+            return {
+                render,
+            }
+        }
+
+        const render = () => 
+            RegisterFormField().renderWithChildren([
+                Label().render(),
+                Input().render()
+            ])
+
+
+        return {
+            render,
+        }
+    }
+    const RegisterNameInput = () => {
+
+        const Label = () => {
+
+            const LabelText = 'Nome Completo'
+
+            const render = () => <label key='RegisterNameLabel'>{ LabelText }</label>
+
+            return {
+                render,
+            }
+        }
+
+        const Input = () => {
+
+            const render = () =>  <input 
+                type="text" 
+                name="name" 
+                id="password"
+                onChange={e=>setEmployeeName(e.target.value)}
+                value={employeeName}
+                key="RegisterNamedInput"
                 required
             />
 

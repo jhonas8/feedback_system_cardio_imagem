@@ -15,12 +15,14 @@ import {
     AdminPage,
     RegistrationPage,
     TIPage,
+    UsersPage,
 } from './'
 
 import {
     AuthProvider,
     AuthContext
 } from '../contexts/auth/auth'
+import NotFoundPage from './NotFound'
 
 export default function AppRoutes(){
 
@@ -42,9 +44,9 @@ export default function AppRoutes(){
         return loading
             ? LoadingText()
             : authenticated
-                ? isAuthorizedSegment
+                ? isAuthorizedSegment  
                     ? <> { children } </>
-                    : <Navigate to={'/' + userSegment?.toLowerCase()!}/>
+                    : <Navigate to={'/' + (userSegment!=='Recepção' ? userSegment?.toLowerCase()! : '')}/>
                 : <Navigate to='/login'/>
     }
 
@@ -75,7 +77,15 @@ export default function AppRoutes(){
                                 <RegistrationPage/>
                             </Private>
                         }/>
+
+                        <Route path='users' element={
+                            <Private segment='TI'>
+                                <UsersPage/>
+                            </Private>
+                        }/>
                     </Route>
+
+                    <Route path='*' element={<NotFoundPage/>}/>
                 </Routes>
             </AuthProvider>
         </Router>
