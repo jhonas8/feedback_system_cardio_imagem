@@ -9,4 +9,5 @@ export type user = {
     password: string,
     segment: string
     employeeName?: string
+    _id?: string
 }

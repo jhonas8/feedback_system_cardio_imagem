@@ -120,19 +120,26 @@ export default function UsersTable(this: any, props: Props) {
                 <table className="usersTable" key="usersTable">
                     <thead key='tableUsersHead'>
                         <tr>
-                            <th style={{width:'17%'}}>Nome</th>
+                            <th style={{width:'35%'}}>Nome</th>
                             <th>Usuário</th>
+                            <th>Segmento</th>
                             <th style={{width:"7%"}}></th>
                             <th style={{width:"9%"}}></th>
                         </tr>
                     </thead>
                     <tbody key='tableUsersBody'>
                         {
-                            users?.map(
+                            users
+                            ?.sort((a,b) => a.employeeName!.toLowerCase() > b.employeeName!.toLowerCase()
+                                ? 1 
+                                : -1 
+                            ) //sorting alphabetically
+                            .map(
                                 (user, index) => (
                                     <tr key={user['_id']!}>
                                         <td style={{textTransform:'capitalize'}}>{ user!.employeeName }</td>
                                         <td>{ user!.name }</td>
+                                        <td>{ user!.segment} </td>
                                         <td>{ EditButton(user!['_id']!).render() }</td>
                                         <td>{ RemoveButton(user!['_id']!, index).render() }</td>
                                     </tr>

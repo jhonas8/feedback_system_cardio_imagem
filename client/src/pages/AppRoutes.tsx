@@ -16,6 +16,7 @@ import {
     RegistrationPage,
     TIPage,
     UsersPage,
+    SearchUsersPage,
 } from './'
 
 import {
@@ -59,11 +60,20 @@ export default function AppRoutes(){
                             <HomePage/>
                         </Private>
                     }/>
-                    <Route path='/admin' element={
-                        <Private segment='admin'>
-                            <AdminPage/>
-                        </Private>
-                    }/>
+                    <Route path='/admin'>
+                        <Route index element={
+                            <Private segment='admin'>
+                                <AdminPage/>
+                            </Private>
+                        }/>
+
+                        <Route path='search' element={
+                            <Private segment='admin'>
+                                <SearchUsersPage/>
+                            </Private>
+                        }/>
+                    </Route>
+
                     <Route path='/login' element={<LoginPage/>}/>
                     <Route path='/ti' >
                         <Route index element={

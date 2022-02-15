@@ -53,8 +53,8 @@ export default function TIPage(this: any) {
     return(
         <main className="tiPage" key='tiPage'>
             { LogoutButton().render() }
-            { TIPageButton(props.for.showUserButton).render() }
             { TIPageButton(props.for.registerNewUser).render() }
+            { TIPageButton(props.for.showUserButton).render() }
         </main>
     )
 }

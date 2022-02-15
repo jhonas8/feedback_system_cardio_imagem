@@ -47,7 +47,7 @@ const HandlerFeedback = async(key: string) => {
 
 
 export const api = axios.create({
-    baseURL:'http://localhost:8001'
+    baseURL:'http://192.168.0.107:8001'
 })
 
 export const postValue = async(value: string, userId: string) =>{

@@ -37,6 +37,19 @@ export default class User {
         await userModel.save()
     }
 
+    public static async usersWithNameOf(username: string): Promise<any> {
+        const users = await UserModel
+            .find()
+            .exec()
+
+        const usernameWithNoWhiteSpaces = username.toLowerCase().replace(/\s+/g, '')
+
+        return users.filter(user =>(
+                user.employeeName.toLowerCase().replace(/\s+/g, '').includes(usernameWithNoWhiteSpaces)
+                && user.segment === 'Recepção'
+            ))
+    }
+
     public async changePassword(newPassword: string) {
         const user = await UserModel
             .findById(this.ID)
@@ -93,7 +106,13 @@ export default class User {
     }
 
     public async allAvaliations() {
-        return await AvaliationModel.find()
+        const avaliations = await AvaliationModel
+            .find({userId: this.ID})
+            .exec()
+
+        return avaliations.map(
+            avaliation => ({rate: avaliation.feedbackRate, total: avaliation.total})
+        )
     }
 
     public async totalOfAvaliations() {
