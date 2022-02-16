@@ -1,3 +1,5 @@
+import ScoreTypes from "./ScoreTypes"
+
 declare namespace userType {
     export interface user {
         id: string
@@ -5,6 +7,7 @@ declare namespace userType {
         segment?: string
         employeeName?: string
         _id?:string
+        score?: ScoreTypes.Score
     }
 }
 

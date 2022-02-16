@@ -16,6 +16,7 @@ import {
     RegistrationPage,
     TIPage,
     UsersPage,
+    UserPage,
     SearchUsersPage,
 } from './'
 
@@ -66,6 +67,14 @@ export default function AppRoutes(){
                                 <AdminPage/>
                             </Private>
                         }/>
+
+                        <Route path='userpage'>
+                            <Route path=':userId' element={
+                                <Private segment='admin'>
+                                    <UserPage/>
+                                </Private>
+                            }/>
+                        </Route>
 
                         <Route path='search' element={
                             <Private segment='admin'>

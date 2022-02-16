@@ -1,5 +1,6 @@
 import AvaliationModel from "../Schemas/Avaliation"
 import UserModel from "../Schemas/UserSchema"
+import HistoryModel from "../Schemas/AvaliationHistory"
 import { avaliationRate, user } from "../@types/mongoRequestType"
 
 export default class User {
@@ -7,6 +8,18 @@ export default class User {
 
     constructor(userId: string) {
         this.ID = userId
+        
+        this.shouldCleanHistory()
+    }
+    
+    private async shouldCleanHistory(): Promise<void> {
+        const actualMonth = (new Date().getMonth() + 1)
+        const twoMonthsApart =  actualMonth - 2
+
+        await HistoryModel 
+            .deleteMany({
+                fromMonth: twoMonthsApart
+            })
     }
 
     public static async exists({name , password}: {name: string, password: string}): Promise<any> {
@@ -50,6 +63,22 @@ export default class User {
             ))
     }
 
+    public async getPublicData(): Promise<any> {
+        const user = await UserModel
+            .findById(this.ID)
+            .exec()
+
+        const avaliations = await AvaliationModel
+            .find({userId: this.ID})
+            .exec()
+
+        const history = await HistoryModel
+            .find({userId: this.ID})
+            .exec()
+
+        return { user, avaliations, history }
+    }
+
     public async changePassword(newPassword: string) {
         const user = await UserModel
             .findById(this.ID)
@@ -91,8 +120,12 @@ export default class User {
 
         await existentAvaliation
             .updateOne({
-                total: existentAvaliation.total + 1
-            })    
+                total: existentAvaliation.total + 1,
+                actualMonth: new Date().getMonth()
+            })   
+            
+        const historyModel = new HistoryModel({feedbackRate, userId: this.ID})
+        await historyModel.save()
     }
 
     public async submitNewAvaliation(feedbackRate: string): Promise<void> {
@@ -102,7 +135,10 @@ export default class User {
             total: 1
         }
         const avaliationModel = new AvaliationModel(avaliationRate)
+        const historyModel = new HistoryModel({feedbackRate, userId: this.ID})
+        
         await avaliationModel.save()
+        await historyModel.save()
     }
 
     public async allAvaliations() {

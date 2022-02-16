@@ -1,0 +1,32 @@
+.cardUserProfile {
+  width: 100vw;
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  border: 1px solid #3ab390;
+}
+.cardUserProfile .userImage img {
+  height: 32vh;
+  width: auto;
+  border-radius: 50%;
+  filter: brightness(1) contrast(3);
+}
+.cardUserProfile .userProfileDesc {
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+.cardUserProfile .userProfileDesc .userNameProfile {
+  font-weight: bolder;
+  font-size: 2rem;
+  text-transform: capitalize;
+}
+.cardUserProfile .userProfileDesc .userSegmentProfile {
+  font-weight: 300;
+  font-size: 1.3rem;
+}
+
+/*# sourceMappingURL=styles.css.map */

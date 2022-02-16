@@ -13,12 +13,8 @@ const avaliationSchema =  new Schema({
         type: String,
         requried: true
     },
-    date: {
-        type: String,
-        default: Date.now
-    }
 })
 
-const AvaliationModel = model('avaliationSchema', avaliationSchema)
+const AvaliationModel = model('AvaliationSchema', avaliationSchema)
 
 export default AvaliationModel

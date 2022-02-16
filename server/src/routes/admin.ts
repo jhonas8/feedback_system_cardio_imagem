@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import { user } from '../@types/mongoRequestType'
 import getAvaliation from '../API/getAvaliation'
+import getUserDataAndScore from '../API/getUserDataAndScore'
 import User from '../structures/user'
 
 const route = Router()
@@ -40,5 +41,7 @@ route.post('/search', async(request, response)=>{
 
     return response.send(usersAndAvaliations)
 })
+
+route.post('/userpage', getUserDataAndScore)
 
 module.exports = route

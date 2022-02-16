@@ -25,7 +25,7 @@ export default function getFeedback() {
         document.addEventListener('keydown',(event)=>addListener(event))
         document.addEventListener('keyup',()=> removeListener())
  
-        return  ()=>{
+        return () => {
             document.removeEventListener('keydown',(event)=>addListener(event))
             document.removeEventListener('keyup',()=> removeListener())
         }
@@ -47,9 +47,9 @@ const HandlerFeedback = async(key: string) => {
 
 
 export const api = axios.create({
-    baseURL:'http://192.168.0.107:8001'
+    baseURL:'http://localhost:8001'
 })
 
-export const postValue = async(value: string, userId: string) =>{
+export const postValue = async(value: string, userId: string) => {
     return api.post('/feedback', { value: value, userId })
 }
