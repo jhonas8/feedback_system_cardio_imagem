@@ -130,6 +130,13 @@ export default function UserPage() {
 
         return { render }
     }
+
+    const noUserStyle: React.CSSProperties = {
+        color: 'var(--primary-color)',
+        width: '100vw',
+        textAlign: 'center',
+        marginTop: '1rem',
+    }
     
     return(
         <div className='userPage'>
@@ -146,7 +153,7 @@ export default function UserPage() {
                             { HistoryCard({history:user?.history!, name:user?.user.employeeName!}).render() }
                         </div>
                     )
-                    : <h3>Não existem avaliações para este funcinário.</h3>
+                    : <h3 style={noUserStyle}>Não existem avaliações para este funcionário.</h3>
 
                 : <LoadSpinn/>
             }

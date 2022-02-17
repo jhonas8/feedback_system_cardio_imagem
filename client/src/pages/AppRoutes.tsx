@@ -18,6 +18,7 @@ import {
     UsersPage,
     UserPage,
     SearchUsersPage,
+    RankingPage
 } from './'
 
 import {
@@ -65,6 +66,12 @@ export default function AppRoutes(){
                         <Route index element={
                             <Private segment='admin'>
                                 <AdminPage/>
+                            </Private>
+                        }/>
+
+                        <Route path='ranking' element={
+                            <Private segment='admin'>
+                                <RankingPage/>
                             </Private>
                         }/>
 

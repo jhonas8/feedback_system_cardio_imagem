@@ -68,6 +68,10 @@ export default class User {
             .findById(this.ID)
             .exec()
 
+        const avaliations = await AvaliationModel
+            .find({userId: this.ID})
+            .exec()
+
         const history = await HistoryModel
             .find({userId: this.ID})
             .exec()
@@ -78,7 +82,7 @@ export default class User {
             employeeName: gettingUser.employeeName
         }
 
-        return { user, history }
+        return { user, avaliations, history }
     }
 
     public async changePassword(newPassword: string) {

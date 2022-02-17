@@ -64,7 +64,7 @@ export default function SearchUsersPage() {
             ? <LoadSpinn/>
             : (
                 <div className="usersGrid" key={"usersGrid"}>
-                    { users.map( user => <UserCard user={user}/>) }
+                    { users.map( user => <UserCard user={user} key={user.id}/>) }
                 </div>
             )
         
