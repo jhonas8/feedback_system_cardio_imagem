@@ -64,19 +64,21 @@ export default class User {
     }
 
     public async getPublicData(): Promise<any> {
-        const user = await UserModel
+        const gettingUser = await UserModel
             .findById(this.ID)
-            .exec()
-
-        const avaliations = await AvaliationModel
-            .find({userId: this.ID})
             .exec()
 
         const history = await HistoryModel
             .find({userId: this.ID})
             .exec()
 
-        return { user, avaliations, history }
+        const user = {
+            name: gettingUser.name,
+            segment: gettingUser.segment,
+            employeeName: gettingUser.employeeName
+        }
+
+        return { user, history }
     }
 
     public async changePassword(newPassword: string) {

@@ -18,10 +18,10 @@ export default class Score {
         }
 
         this.scoreCoefficients = [
-            {value: 187.5, name: 'bad'},
-            {value: 287.5, name: 'suggested'},
-            {value: 40, name: 'great'},
-            {value: 531.25, name: 'exceptional'},
+            {value: 157.5, name: 'bad'},
+            {value: 257.5, name: 'suggested'},
+            {value: 350, name: 'great'},
+            {value: 481.25, name: 'exceptional'},
         ]
         
     }
@@ -103,9 +103,9 @@ export default class Score {
     }
 
     private getPoints(numberOfServices: ScoreTypes.numberOfServices): ScoreTypes.points {
-        const suggestedPoints = numberOfServices.total > 5 ? 287.5 : null
-        const actualPoints = this.getPointsOfAService(numberOfServices)   
-        const classification = this.getClassification(actualPoints)
+        const suggestedPoints = 237.5 * (numberOfServices.total/5)
+        const actualPoints = this.getPointsOfServices(numberOfServices)   
+        const classification = this.getClassification(actualPoints, numberOfServices.total)
         
         return {
             suggestedPoints,
@@ -114,7 +114,7 @@ export default class Score {
         }
     }
 
-    private getPointsOfAService(numberOfServices: ScoreTypes.numberOfServices): number {
+    private getPointsOfServices(numberOfServices: ScoreTypes.numberOfServices): number {
         const indexes: ScoreTypes.servicesIndexes = ['great','good','regular','bad']
 
         const points = indexes.map(
@@ -127,10 +127,12 @@ export default class Score {
         return (points * 100)
     }
 
-    private getClassification(actualpoints: number): ScoreTypes.points['classification'] {
+    private getClassification(actualpoints: number, numberOfServices: number): ScoreTypes.points['classification'] {
         const valueOfFittableCoefficient = this.scoreCoefficients
             .filter(
-                coefficient => (actualpoints/coefficient.value > 0) ? true : false
+                coefficient => (coefficient.value * numberOfServices)/5 <= actualpoints
+                    ? true
+                    : false
             )
             .reduce(
                 (accumulator, actualCoefficient) => Math.max(accumulator, actualCoefficient.value), 0

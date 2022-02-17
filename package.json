@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/jhonas8/feedback_system_cardio_imagem/issues"
   },
-  "homepage": "https://github.com/jhonas8/feedback_system_cardio_imagem#readme"
+  "homepage": "https://github.com/jhonas8/feedback_system_cardio_imagem#readme",
+  "dependencies": {
+    "recharts": "^2.1.9"
+  }
 }

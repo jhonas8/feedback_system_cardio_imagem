@@ -1,14 +1,36 @@
 declare namespace ScoreTypes {
 
-    export interface ScoreMonth {
-        avarage: number | string
-        pontuation: number | string
-        numberOfServices: number | string 
+    export interface avarage {
+        bad: number,
+        regular: number,
+        good: number,
+        great: number,
+    }
+    
+    export interface numberOfServices extends avarage {
+        total: number,
     }
 
-    export interface Score {
-        previousMonth: ScoreMonth
-        actualMonth: ScoreMonth
+    export interface points {
+        suggestedPoints: number //Actually, any multiple of 287.5
+
+        actualPoints: number
+
+        classification: |'bad'
+                        |'suggested'
+                        |'great'
+                        |'exceptional'
+    }
+
+    export interface monthResult {
+        avarage: avarage
+        points: points
+        numberOfServices: numberOfServices
+    }
+
+    export interface score {
+        previousMonth: monthResult | null
+        currentMonth: monthResult
     }
 }
 

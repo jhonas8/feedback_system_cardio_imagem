@@ -1,6 +1,6 @@
 import User from '../structures/user'
 import ScoreTypes from '../@types/scoreTypes'
-import Score from '../utils/getUserScore'
+import Score from '../structures/score'
 
 export default async function getUserDataAndScore(request: any, response: any) {
     const requestUser = await new User(request.body.userId).getPublicData() as ScoreTypes.requestUser
@@ -11,6 +11,7 @@ export default async function getUserDataAndScore(request: any, response: any) {
         ...requestUser,
         score: userScore
     }
+
 
     response.send(reponseUser)
 }

@@ -71,6 +71,7 @@ export default function LoginCard(this: any, props: Types.Props) {
                 onChange={e=>setName(e.target.value)}
                 value={name}
                 key="LoginUserInput"
+                autoFocus
             />
 
             return {

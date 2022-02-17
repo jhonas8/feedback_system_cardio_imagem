@@ -31,7 +31,7 @@ declare namespace ScoreTypes {
     }
 
     export interface points {
-        suggestedPoints: 287.5 | null
+        suggestedPoints: number //Actually, any multiple of 287.5
 
         actualPoints: number
 
@@ -49,10 +49,10 @@ declare namespace ScoreTypes {
     ]
 
     export type scoreCoefficients = [
-        {value: 187.5, name: 'bad'},
-        {value: 287.5, name: 'suggested'},
-        {value: 40, name: 'great'},
-        {value: 531.25, name: 'exceptional'},
+        {value: 157.5, name: 'bad'},
+        {value: 257.5, name: 'suggested'},
+        {value: 350, name: 'great'},
+        {value: 481.25, name: 'exceptional'},
     ]
 
     export interface monthResult {
