@@ -14,7 +14,7 @@ export default function AdminButton() {
                 <button className="chartButtonAdmin" id='adminButton'>
                     <ChartIcon/>
                 </button>
-                <p>Gráficos</p>
+                <p>Geral</p>
             </div>
         </Link>
     )
